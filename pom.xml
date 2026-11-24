@@ -7,7 +7,7 @@
 
     <groupId>cat.stucom.mp0486.ra2</groupId>
     <artifactId>computer-center-shop-v1-javafx-starter</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>		
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
