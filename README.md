@@ -68,18 +68,70 @@ Marqueu una tasca quan la prova i el rastre al repositori estiguin recollits. El
 
 Dupliqueu aquest bloc per a cada *issue* que completeu. Escriviu amb les vostres paraules i enllaceu només proves i *commits* del vostre repositori.
 
-### RA2-ISSUE-XX · [títol de l'*issue*]
+### RA2-ISSUE-01 · Preparacio del projecte
 
-- Estat: **pendent | en curs | comprovat**
-- Persona que l'ha iniciat: **[nom]**
-- Problema inicial: **[què no funcionava o què faltava]**
-- Decisió aplicada: **[què heu decidit fer i per què]**
-- Canvis fets: **[fitxers o parts del projecte modificades]**
-- Prova realitzada: **[cas que heu provat i resultat observat]**
-- Evidència: **[enllaç a captura, registre, vídeo breu o apartat del repositori]**
-- *Commit* o *pull request*: **[enllaç o identificador]**
-- Explicació individual: **[què pot explicar cada integrant sobre aquesta tasca]**
-- Ús d'IA, si n'hi ha hagut: **[consulta feta, ajuda rebuda i comprovació pròpia]**
+- Estat: comprovat
+- Persona que l'ha iniciat: Sebastian Alarcon.
+- Problema inicial: Calia preparar el projecte inicial per poder començar a treballar amb Java, Maven i JavaFX.
+- Decisió aplicada: He treballat amb el projecte inicial proporcionat pel professor i treballar-hi amb Eclipse i Maven.
+- Canvis fets: Preparació i revisió de l'estructura del projecte i de la configuració necessària per executar-lo.
+- Prova realitzada: Compilació i execució del projecte per comprovar que s'inicia correctament.
+- Evidència: https://github.com/Victor29031/ComputerCenterShop_v1_javafx_starter-main_VS/issues/2#issuecomment-7014656985
+- Commit o pull request: 
+- Explicació individual: L'objectiu era preparar el projecte per poder desenvolupar les següents tasques.
+- Ús d'IA: Hem utilitzat ChatGPT com a suport per entendre el projecte i revisar els passos de preparació.
+
+### RA2-ISSUE-02 · Connectar, URL i connexio
+
+- Estat: comprovat 
+- Persona que l'ha iniciat: Sebastian Alarcon.
+- Problema inicial: Faltava implementar la connexió amb la base de dades mitjançant JDBC.
+- Decisió aplicada: Utilitzar `DriverManager.getConnection()` per connectar amb la base de dades H2, fent servir la URL, l'usuari i la contrasenya configurats.
+- Canvis fets: Modificació del mètode `connect()` de `ProductDaoImplJDBC.java`.
+- Prova realitzada: Execució de l'aplicació des d'Eclipse i comprovació de la connexió amb la base de dades H2.
+- Evidència: https://github.com/Victor29031/ComputerCenterShop_v1_javafx_starter-main_VS/issues/1#issuecomment-7015071484
+- Commit o pull request: 
+- Explicació individual: El mètode `connect()` utilitza `DriverManager.getConnection()` i guarda la connexió a la variable `conn`.
+- Ús d'IA: Hem utilitzat ChatGPT com a suport per entendre la connexió JDBC i revisar el codi.
+
+### RA2-ISSUE-03 · Estructura relacional
+
+- Estat: comprovat 
+- Persona que l'ha iniciat: Sebastian Alarcon.
+- Problema inicial: Faltava crear l'estructura de la base de dades i afegir les dades inicials.
+- Decisió aplicada: Crear les taules mitjançant instruccions SQL i utilitzar `Statement` amb `try-with-resources`.
+- Canvis fets: Implementació del mètode `initSchema()` a `ProductDaoImplJDBC.java`. També s'han fet ajustos a `ShopView.fxml` i `ShopController`.
+- Prova realitzada: Execució de l'aplicació i comprovació de la inicialització de la base de dades H2.
+- Evidència: https://github.com/Victor29031/ComputerCenterShop_v1_javafx_starter-main_VS/issues/3#issuecomment-7016990912
+- Commit o pull request:
+- Explicació individual: El mètode crea les taules `products` i `inventory_history`, estableix la clau forana, crea l'àlies `STOCK_ALERT_LIMIT` i insereix productes inicials si la taula està buida.
+- Ús d'IA: Hem utilitzat ChatGPT com a suport per entendre les instruccions SQL i revisar la implementació. 
+
+### RA2-ISSUE-04 · Implementar insercio amb PreparedStatement
+
+- Estat: comprovat.
+- Persona que l'ha iniciat: Sebastian Alarcon.
+- Problema inicial: Faltava implementar la inserció de productes a la base de dades mitjançant JDBC.
+- Decisió aplicada: Utilitzar `PreparedStatement` amb una sentència SQL parametritzada per inserir els productes.
+- Canvis fets: Implementació del mètode `insertProduct(Product product)` a `ProductDaoImplJDBC.java`.
+- Prova realitzada: S'ha provat la inserció d'un producte i s'ha comprovat que apareix correctament en una consulta posterior.
+- Evidència: https://github.com/Victor29031/ComputerCenterShop_v1_javafx_starter-main_VS/issues/5#issuecomment-7196966008
+- Commit o pull request: 
+- Explicació individual: El mètode utilitza `PreparedStatement` per assignar el nom, el preu majorista, la disponibilitat i l'estoc. Després executa la inserció i retorna el nombre de files afectades.
+- Ús d'IA: Hem utilitzat ChatGPT com a suport per entendre el funcionament de `PreparedStatement` i revisar la implementació. 
+
+### RA2-ISSUE-05 · Implementar actualitzacio d'estoc
+
+- Estat: comprovat.
+- Persona que l'ha iniciat: Sebastian Alarcon.
+- Problema inicial: Faltava implementar l'actualització de l'estoc dels productes a la base de dades.
+- Decisió aplicada: Utilitzar `PreparedStatement` amb una sentència SQL `UPDATE` per modificar l'estoc i la disponibilitat.
+- Canvis fets: Implementació del mètode `updateStock(String name, int newStock)` a `ProductDaoImplJDBC.java`.
+- Prova realitzada: Hem modificat l'estoc del producte Mouse de 25 a 0 i s'ha comprovat que la disponibilitat ha canviat de `true` a `false`.
+- Evidència: https://github.com/Victor29031/ComputerCenterShop_v1_javafx_starter-main_VS/issues/6#issuecomment-7199441276
+- Commit o pull request: 
+- Explicació individual: El mètode utilitza `PreparedStatement` per actualitzar el stock, canviar la disponibilitat segons les unitats disponibles i retornar les files afectades.
+- Ús d'IA: Hem utilitzat ChatGPT com a suport per entendre el funcionament de `PreparedStatement` i les sentències SQL `UPDATE`.
 
 ## Proves que hem de poder repetir
 
